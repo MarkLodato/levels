@@ -1,4 +1,4 @@
-package policy
+package slsa
 
 default allow = false
 
