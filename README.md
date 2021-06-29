@@ -42,11 +42,11 @@ software developers and consumers.
 
 SLSA addresses three issues:
 
--  Software producers want to secure their supply chains but don't know
-   exactly how;
--  Software consumers want to understand and limit their exposure to supply
-   chain attacks but have no means of doing so;
--  Artifact signatures alone prevent only a subset of the attacks we care about.
+- Software producers want to secure their supply chains but don't know
+  exactly how;
+- Software consumers want to understand and limit their exposure to supply
+  chain attacks but have no means of doing so;
+- Artifact signatures alone prevent only a subset of the attacks we care about.
 
 ### Supply Chain Threats
 
@@ -225,8 +225,8 @@ dependencies' supply chains plus its own sources and builds.
 
 Special cases:
 
-*   A ZIP file is containing source code is a package, not a source, because it
-    is built from some other source, such as a git commit.
+- A ZIP file is containing source code is a package, not a source, because it
+  is built from some other source, such as a git commit.
 
 ### SLSA Levels
 
@@ -275,49 +275,29 @@ it is possible for a SLSA 4 artifact to be built from SLSA 0 dependencies.
 The following is a summary. For details, click the links in the table for
 corresponding [requirements](requirements.md).
 
-Requirement                          | SLSA 1 | SLSA 2 | SLSA 3 | SLSA 4
------------------------------------- | ------ | ------ | ------ | ------
-Source - [Version Controlled]        |        | ✓      | ✓      | ✓
-Source - [Verified History]          |        |        | ✓      | ✓
-Source - [Retained Indefinitely]     |        |        | 18 mo. | ✓
-Source - [Two-Person Reviewed]       |        |        |        | ✓
-Build - [Scripted Build]             | ✓      | ✓      | ✓      | ✓
-Build - [Build Service]              |        | ✓      | ✓      | ✓
-Build - [Ephemeral Environment]      |        |        | ✓      | ✓
-Build - [Isolated]                   |        |        | ✓      | ✓
-Build - [Parameterless]              |        |        |        | ✓
-Build - [Hermetic]                   |        |        |        | ✓
-Build - [Reproducible]               |        |        |        | ○
-Provenance - [Available]             | ✓      | ✓      | ✓      | ✓
-Provenance - [Authenticated]         |        | ✓      | ✓      | ✓
-Provenance - [Service Generated]     |        | ✓      | ✓      | ✓
-Provenance - [Non-Falsifiable]       |        |        | ✓      | ✓
-Provenance - [Dependencies Complete] |        |        |        | ✓
-Common - [Security]                  |        |        |        | ✓
-Common - [Access]                    |        |        |        | ✓
-Common - [Superusers]                |        |        |        | ✓
+| Requirement                          | SLSA 1 | SLSA 2 | SLSA 3 | SLSA 4 |
+| ------------------------------------ | ------ | ------ | ------ | ------ |
+| Source - [Version Controlled]        |        | ✓      | ✓      | ✓      |
+| Source - [Verified History]          |        |        | ✓      | ✓      |
+| Source - [Retained Indefinitely]     |        |        | 18 mo. | ✓      |
+| Source - [Two-Person Reviewed]       |        |        |        | ✓      |
+| Build - [Scripted Build]             | ✓      | ✓      | ✓      | ✓      |
+| Build - [Build Service]              |        | ✓      | ✓      | ✓      |
+| Build - [Ephemeral Environment]      |        |        | ✓      | ✓      |
+| Build - [Isolated]                   |        |        | ✓      | ✓      |
+| Build - [Parameterless]              |        |        |        | ✓      |
+| Build - [Hermetic]                   |        |        |        | ✓      |
+| Build - [Reproducible]               |        |        |        | ○      |
+| Provenance - [Available]             | ✓      | ✓      | ✓      | ✓      |
+| Provenance - [Authenticated]         |        | ✓      | ✓      | ✓      |
+| Provenance - [Service Generated]     |        | ✓      | ✓      | ✓      |
+| Provenance - [Non-Falsifiable]       |        |        | ✓      | ✓      |
+| Provenance - [Dependencies Complete] |        |        |        | ✓      |
+| Common - [Security]                  |        |        |        | ✓      |
+| Common - [Access]                    |        |        |        | ✓      |
+| Common - [Superusers]                |        |        |        | ✓      |
 
 _○ = required unless there is a justification_
-
-[Access]: requirements.md#access
-[Authenticated]: requirements.md#authenticated
-[Available]: requirements.md#available
-[Build Service]: requirements.md#build-service
-[Dependencies Complete]: requirements.md#dependencies-complete
-[Ephemeral Environment]: requirements.md#ephemeral-environment
-[Hermetic]: requirements.md#hermetic
-[Isolated]: requirements.md#isolated
-[Non-Falsifiable]: requirements.md#non-falsifiable
-[Parameterless]: requirements.md#parameterless
-[Reproducible]: requirements.md#reproducible
-[Retained Indefinitely]: requirements.md#retained-indefinitely
-[Scripted Build]: requirements.md#scripted-build
-[Security]: requirements.md#security
-[Service Generated]: requirements.md#service-generated
-[Superusers]: requirements.md#superusers
-[Two-Person Reviewed]: requirements.md#two-person-reviewed
-[Verified History]: requirements.md#verified-history
-[Version Controlled]: requirements.md#version-controlled
 
 ### Frequently Asked Questions
 
@@ -366,18 +346,18 @@ satisfy all of the SLSA build requirements.
 That said, verified reproducible builds are not a complete solution to supply
 chain integrity, nor are they practical in all cases:
 
-*   Reproducible builds do not address source, dependency, or distribution
-    threats.
-*   Reproducers must truly be independent, lest they all be susceptible to the
-    same attack. For example, if all rebuilders run the same pipeline software,
-    and that software has a vulnerability that can be triggered by sending a
-    build request, then an attacker can compromise all rebuilders, violating the
-    assumption above.
-*   Some builds cannot easily be made reproducible, as noted above.
-*   Closed-source reproducible builds require the code owner to either grant
-    source access to multiple independent rebuilders, which is unacceptable in
-    many cases, or develop multiple, independent in-house rebuilders, which is
-    likely prohibitively expensive.
+- Reproducible builds do not address source, dependency, or distribution
+  threats.
+- Reproducers must truly be independent, lest they all be susceptible to the
+  same attack. For example, if all rebuilders run the same pipeline software,
+  and that software has a vulnerability that can be triggered by sending a
+  build request, then an attacker can compromise all rebuilders, violating the
+  assumption above.
+- Some builds cannot easily be made reproducible, as noted above.
+- Closed-source reproducible builds require the code owner to either grant
+  source access to multiple independent rebuilders, which is unacceptable in
+  many cases, or develop multiple, independent in-house rebuilders, which is
+  likely prohibitively expensive.
 
 Therefore, SLSA does not require verified reproducible builds directly. Instead,
 verified reproducible builds are one option for implementing the requirements.
@@ -396,46 +376,63 @@ data models. Currently this is joint work between
 [Binary Authorization](https://cloud.google.com/binary-authorization) and
 [in-toto](https://in-toto.io/) but we invite wider participation.
 
-*   [Standard attestation format](https://github.com/in-toto/attestation#in-toto-attestations)
-    to express provenance and other attributes. This will allow sources and
-    builders to express properties in a standard way that can be consumed by
-    anyone. Also includes reference implementations for generating these
-    attestations.
-*   Policy data model and reference implementation.
+- [Standard attestation format](https://github.com/in-toto/attestation#in-toto-attestations)
+  to express provenance and other attributes. This will allow sources and
+  builders to express properties in a standard way that can be consumed by
+  anyone. Also includes reference implementations for generating these
+  attestations.
+- Policy data model and reference implementation.
 
 For a broader view of the software supply chain problem:
 
-*   [Know, Prevent, Fix: A framework for shifting the discussion around
-    vulnerabilities in open
-    source](https://security.googleblog.com/2021/02/know-prevent-fix-framework-for-shifting.html)
-*   [Threats, Risks, and Mitigations in the Open Source Ecosystem]
+- [Know, Prevent, Fix: A framework for shifting the discussion around
+  vulnerabilities in open
+  source](https://security.googleblog.com/2021/02/know-prevent-fix-framework-for-shifting.html)
+- [Threats, Risks, and Mitigations in the Open Source Ecosystem]
 
 Prior iterations of the ideas presented here:
 
-*   [Building Secure and Reliable Systems, Chapter 14: Deploying Code](https://sre.google/static/pdf/building_secure_and_reliable_systems.pdf#page=339)
-*   [Binary Authorization for Borg] - This is how Google implements the SLSA
-    idea internally.
+- [Building Secure and Reliable Systems, Chapter 14: Deploying Code](https://sre.google/static/pdf/building_secure_and_reliable_systems.pdf#page=339)
+- [Binary Authorization for Borg] - This is how Google implements the SLSA
+  idea internally.
 
 Other related work:
 
-*   [CII Best Practices Badge](https://bestpractices.coreinfrastructure.org/en)
-*   [Security Scorecards](https://github.com/ossf/scorecard) - Perhaps SLSA
-    could be implemented as an aggregation of scorecard entries, for at least
-    the checks that can be automated.
-*   [Trustmarks](https://trustmark.gtri.gatech.edu/)
+- [CII Best Practices Badge](https://bestpractices.coreinfrastructure.org/en)
+- [Security Scorecards](https://github.com/ossf/scorecard) - Perhaps SLSA
+  could be implemented as an aggregation of scorecard entries, for at least
+  the checks that can be automated.
+- [Trustmarks](https://trustmark.gtri.gatech.edu/)
 
 Other takes on provenance and CI/CD:
 
-*   [The Path to Code Provenance](https://medium.com/uber-security-privacy/code-provenance-application-security-77ebfa4b6bc5)
-*   [How to Build a Compromise-Resilient CI/CD](https://www.youtube.com/watch?v=9hCiHr1f0zM)
+- [The Path to Code Provenance](https://medium.com/uber-security-privacy/code-provenance-application-security-77ebfa4b6bc5)
+- [How to Build a Compromise-Resilient CI/CD](https://www.youtube.com/watch?v=9hCiHr1f0zM)
 
 <!-- Links -->
 
-[Binary Authorization for Borg]: https://cloud.google.com/security/binary-authorization-for-borg
-[GitHub issues]: https://github.com/slsa-framework/slsa/issues
-[Threats, Risks, and Mitigations in the Open Source Ecosystem]: https://github.com/Open-Source-Security-Coalition/Open-Source-Security-Coalition/blob/master/publications/threats-risks-mitigations/v1.1/Threats%2C%20Risks%2C%20and%20Mitigations%20in%20the%20Open%20Source%20Ecosystem%20-%20v1.1.pdf
-[curl-dev]: https://pkgs.alpinelinux.org/package/edge/main/x86/curl-dev
-[curlimages/curl]: https://hub.docker.com/r/curlimages/curl
+[access]: requirements.md#access
+[authenticated]: requirements.md#authenticated
+[available]: requirements.md#available
+[binary authorization for borg]: https://cloud.google.com/security/binary-authorization-for-borg
+[build service]: requirements.md#build-service
+[dependencies complete]: requirements.md#dependencies-complete
+[ephemeral environment]: requirements.md#ephemeral-environment
 [feedback form]: https://forms.gle/93QRfUqF7YY2mJDi9
+[github issues]: https://github.com/slsa-framework/slsa/issues
+[hermetic]: requirements.md#hermetic
+[isolated]: requirements.md#isolated
 [mailing list]: https://groups.google.com/g/slsa-discussion
+[non-falsifiable]: requirements.md#non-falsifiable
+[parameterless]: requirements.md#parameterless
+[reproducible]: requirements.md#reproducible
+[retained indefinitely]: requirements.md#retained-indefinitely
 [salsa]: https://www.google.com/search?q=how+to+pronounce+salsa
+[scripted build]: requirements.md#scripted-build
+[security]: requirements.md#security
+[service generated]: requirements.md#service-generated
+[superusers]: requirements.md#superusers
+[threats, risks, and mitigations in the open source ecosystem]: https://github.com/Open-Source-Security-Coalition/Open-Source-Security-Coalition/blob/master/publications/threats-risks-mitigations/v1.1/Threats%2C%20Risks%2C%20and%20Mitigations%20in%20the%20Open%20Source%20Ecosystem%20-%20v1.1.pdf
+[two-person reviewed]: requirements.md#two-person-reviewed
+[verified history]: requirements.md#verified-history
+[version controlled]: requirements.md#version-controlled
